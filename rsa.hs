@@ -7,7 +7,7 @@ getN' :: Integer -> Integer -> Integer
 getN' p q = (p - 1) * (q - 1) 
 
 getD :: Integer -> Integer -> Integer -> Integer
-getD k n' e = (div (1 + k * n') e) 
+getD k n' e = div (1 + k * n') e
 
 enc :: Integer -> Integer -> Integer -> Integer
 enc m c n = mod (m ^ c) n 
