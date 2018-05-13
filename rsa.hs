@@ -19,7 +19,7 @@ main = do
 	let p = 101; 		q = 53
 	let n = getN p q;	n' = getN' p q
 
-	let e = 3;			k = 2
+	let e = 3;		k = 2
 	let d = getD k n' e
 
 	let _E = enc _M e n;	_D = enc _E d n 
