@@ -1,5 +1,7 @@
 -- RSA ШИФРОВАНИЕ START --
 
+module Main where
+
 getN :: Integer -> Integer -> Integer 
 getN p q = p * q   
 
