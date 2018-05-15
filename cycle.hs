@@ -1,10 +1,10 @@
 module Main where
 
-cyclef :: Integer -> IO() -> IO()
-cyclef 0 _ = return ()
-cyclef x action = do
+cycles :: Integer -> IO() -> IO()
+cycles 0 _ = return ()
+cycles x action = do
     action
-    cyclef (x-1) (action)
+    cycles (x-1) (action)
 
 main :: IO()
-main = cyclef 10 (print "Hello World!")
+main = cycles 10 (print "Hello World!")
