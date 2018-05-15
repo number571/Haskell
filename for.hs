@@ -1,10 +1,10 @@
 module Main where
 
-for :: Integer -> IO() -> IO()
-for 0 _ = return ()
-for x code = do
+for :: [Integer] -> IO() -> IO()
+for [] _ = return ()
+for (x:xs) code = do
     code
-    for (x-1) code
+    for xs code
 
 main :: IO()
-main = for 10 $ print "Hello World"
+main = for [0..10] $ print "Hello World"
