@@ -7,4 +7,7 @@ for (x:xs) code = do
     for xs code
 
 main :: IO()
-main = for [0..10] $ print "Hello World"
+main = for range $ print message
+    where 
+        range = [0..10]
+        message = "Hello World"
