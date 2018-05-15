@@ -7,4 +7,4 @@ cycles x action = do
     cycles (x-1) (action)
 
 main :: IO()
-main = cycles 10 (print "Hello World!")
+main = cycles 10 $ print "Hello World!"
