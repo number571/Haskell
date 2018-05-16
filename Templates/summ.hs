@@ -6,4 +6,4 @@ summ (x:xs) = do
     summ xs + x
 
 main :: IO()
-main = print (summ [0..5])
+main = print . summ $ [0..5]
