@@ -1,6 +1,8 @@
 {-# LANGUAGE MultiWayIf #-}
 
 module Main where
+
+import System.IO (hSetBuffering, stdout, BufferMode(..))
 import Data.Char (chr, ord, toUpper, isAlpha, isDigit)
 
 encrypt :: Char -> Int -> Char
@@ -18,10 +20,15 @@ decrypt c k = if
     where c' = toUpper c
 
 caesar :: Char -> String -> Int -> String
-caesar m s k = case m of
-    'e' -> [encrypt c k | c <- s]
-    'd' -> [decrypt c k | c <- s]
-    otherwise -> "Mode is not found"
+caesar m s k = if
+    | m == 'e' || m == 'E' -> [encrypt c k | c <- s]
+    | m == 'd' || m == 'D' -> [decrypt c k | c <- s]
+    | otherwise -> "Mode is not found"
 
 main :: IO()
-main = print (caesar 'e' "Hello World!" 1)
+main = do
+    hSetBuffering stdout NoBuffering
+    putStr "Mode: "   ; mode    <- getChar; getChar
+    putStr "Message: "; message <- getLine
+    putStr "Key: "    ; key     <- readLn :: IO Int
+    putStrLn $ "Final: " ++ caesar mode message key
