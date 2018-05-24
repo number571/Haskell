@@ -31,7 +31,7 @@ len [] = 0
 len (x:xs) = (+) 1 $ len xs
 
 ind :: [Bool] -> [Int]
-ind xs = [(len xs - 1), (len xs - 2) .. 0]
+ind xs = [((-) (len xs) 1), ((-) (len xs) 2) .. 0]
 
 rev :: [Bool] -> [Bool]
 rev xs = [(!!) xs x | x <- ind xs]
