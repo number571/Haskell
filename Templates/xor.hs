@@ -40,8 +40,7 @@ getXor :: Bool -> Bool -> Bool
 getXor x y = (||) ((&&) (not x) y) ((&&) x (not y))
 
 plus :: [Bool] -> [Bool] -> [Bool]
-plus [] _ = []
-plus _ [] = []
+plus [] _ = []; plus _ [] = []
 plus (x:xs) (y:ys) = do
     if  | len allX >  len allY -> plus allX $ addFalse allY
         | len allX <  len allY -> plus allY $ addFalse allX
