@@ -5,7 +5,7 @@ import Data.Bits (xor)
 import Data.Char (chr, ord)
 
 encrypt :: Char -> Int-> Char
-encrypt c k = chr(xor (ord c) k)
+encrypt c k = chr . xor k $ ord c
 
 xor' :: String -> Int -> String
 xor' s k = [encrypt c k | c <- s]
