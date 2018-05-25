@@ -19,8 +19,8 @@ decrypt c k = if
     | otherwise -> c
     where c' = toUpper c
 
-caesar :: Char -> String -> Int -> String
-caesar m s k = if
+caesar :: Char -> Int -> String -> String
+caesar m k s = if
     | m == 'e' || m == 'E' -> [encrypt c k | c <- s]
     | m == 'd' || m == 'D' -> [decrypt c k | c <- s]
     | otherwise -> "Mode is not found"
@@ -29,6 +29,6 @@ main :: IO()
 main = do
     hSetBuffering stdout NoBuffering
     putStr "Mode: "   ; mode    <- getChar; getChar
-    putStr "Message: "; message <- getLine
     putStr "Key: "    ; key     <- readLn :: IO Int
-    putStrLn $ "Final: " ++ caesar mode message key
+    putStr "Message: "; message <- getLine
+    putStrLn $ "Final: " ++ caesar mode key message
