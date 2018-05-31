@@ -1,13 +1,11 @@
 module Main where
 
-for :: [Integer] -> IO() -> IO()
-for [] _ = return ()
-for (x:xs) code = do
-    code
-    for xs code
+(|>) :: a -> (a -> b) -> b
+(|>) x f = f x
+
+for :: [Integer] -> String
+for [] = []
+for (x:xs) = show x ++ "\n" ++ for xs
 
 main :: IO()
-main = for range $ print message
-    where 
-        range = [0..10]
-        message = "Hello World"
+main = for [0..10] |> putStrLn
