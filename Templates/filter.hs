@@ -8,4 +8,4 @@ filter' f (x:xs) = if
     | otherwise -> filter' f xs
 
 main :: IO()
-main = print (filter' (>5) [0..10])
+main = print $ filter' (>5) [0..10]
