@@ -26,15 +26,15 @@ toBitList x  = do
         | odd  x -> 1 : toBitList (div x 2)
         | even x -> 0 : toBitList (div x 2)
 
-len :: [Bool] -> Int
-len [] = 0
-len (x:xs) = (+) 1 $ len xs
+length' :: [Bool] -> Int
+length' [] = 0
+length' (x:xs) = (+) 1 $ length' xs
 
-ind :: [Bool] -> [Int]
-ind xs = [((-) (len xs) 1), ((-) (len xs) 2) .. 0]
+index :: [Bool] -> [Int]
+index xs = [((-) (length' xs) 1), ((-) (length' xs) 2) .. 0]
 
-rev :: [Bool] -> [Bool]
-rev xs = [(!!) xs x | x <- ind xs]
+reverse' :: [Bool] -> [Bool]
+reverse' xs = [(!!) xs x | x <- index xs]
 
 getXor :: Bool -> Bool -> Bool
 getXor x y = (||) ((&&) (not x) y) ((&&) x (not y))
@@ -42,9 +42,9 @@ getXor x y = (||) ((&&) (not x) y) ((&&) x (not y))
 plus :: [Bool] -> [Bool] -> [Bool]
 plus [] _ = []; plus _ [] = []
 plus (x:xs) (y:ys) = do
-    if  | len allX >  len allY -> plus allX $ addFalse allY
-        | len allX <  len allY -> plus allY $ addFalse allX
-        | len allX == len allY -> getXor x y : plus xs ys
+    if  | length' allX >  length' allY -> plus allX $ addFalse allY
+        | length' allX <  length' allY -> plus allY $ addFalse allX
+        | length' allX == length' allY -> getXor x y : plus xs ys
     where
         allX = x:xs
         allY = y:ys
@@ -53,8 +53,8 @@ xor' :: Int -> Int -> Int
 xor' xN yN = do
     pack . getNum $ plus xs ys
     where
-        xs = rev [toBool x | x <- toBitList xN]
-        ys = rev [toBool y | y <- toBitList yN]
+        xs = reverse' [toBool x | x <- toBitList xN]
+        ys = reverse' [toBool y | y <- toBitList yN]
 
 main :: IO()
 main = print $ xor' 5 10
