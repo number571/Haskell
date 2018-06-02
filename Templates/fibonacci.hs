@@ -1,8 +1,8 @@
 module Main where
 
-fib :: Integer -> Integer
-fib x | x <= 3 = 1
-fib x = fib(x-1) + fib(x-2)
+fibonacci :: Integral a => a -> a
+fibonacci x | x <= 3 = 1
+fibonacci x = fibonacci(x-1) + fibonacci(x-2)
 
 main :: IO()
-main = print (fac 5)
+main = print $ fibonacci 8
