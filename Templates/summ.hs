@@ -1,9 +1,8 @@
 module Main where
 
-summ :: [Integer] -> Integer
-summ [] = 0
-summ (x:xs) = do
-    summ xs + x
+sum' :: Num a => [a] -> a
+sum' [] = 0
+sum' (x:xs) = x + sum' xs
 
 main :: IO()
-main = print . summ $ [0..5]
+main = print $ sum' [0..5]
