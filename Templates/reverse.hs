@@ -1,14 +1,14 @@
 module Main where
 
-len :: [Int] -> Int
-len [] = 0
-len (x:xs) = 1 + len xs
+length' :: [a] -> Int
+length' [] = 0
+length' (x:xs) = 1 + length' xs
 
-fun :: [Int] -> [Int]
-fun xs = [(len xs-1), (len xs-2) .. 0]
+index :: [Int] -> [Int]
+index xs = [(length' xs-1), (length' xs-2) .. 0]
 
-rev :: [Int] -> [Int]
-rev xs = [ xs !! x | x <- fun xs]
+reverse' :: [Int] -> [Int]
+reverse' xs = [ xs !! x | x <- index xs]
 
 main :: IO()
-main = print $ rev [0,2..10]
+main = print $ reverse' [0,2..10]
