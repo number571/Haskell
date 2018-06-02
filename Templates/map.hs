@@ -5,4 +5,4 @@ map' _ [] = []
 map' f (x:xs) = f x : map' f xs
 
 main :: IO()
-main = print (map' (^2) [0..10])
+main = print $ map' (^2) [0..10]
