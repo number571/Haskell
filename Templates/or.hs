@@ -7,9 +7,10 @@ module Main where
 (|||) _ _ = False
 
 or' [] = False
+or' [x] = x
 or' (x:y:zs) = if
     | x ||| y -> True
-    | otherwise -> or' zs
+    | otherwise -> or' (y:zs)
 
 main :: IO()
-main = print $ or' [False, False, True, False]
+main = print $ or' [False]
