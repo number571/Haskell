@@ -15,17 +15,18 @@ isSpace :: Char -> Bool
 isSpace x = if x == ' ' || x == '\t' || x == '\n'
     then True else False
 
-wait :: String -> String
-wait [] = []
-wait (x:xs) = if
+accumulate :: String -> String
+accumulate [] = []
+accumulate (x:xs) = if
     | isSpace x -> []
-    | otherwise -> x : wait xs
+    | otherwise -> x : accumulate xs
 
 words' :: String -> [String]
 words' [] = []
 words' (x:xs) = if
     | isSpace x -> words' xs
-    | otherwise -> wait (x:xs) : words' (drop' (length' (wait (x:xs))) xs)
+    | otherwise -> accumulate (x:xs) : words' 
+        (drop' (length' (accumulate (x:xs))) xs)
 
 main :: IO()
 main = print $ words' "Hello World!" 
