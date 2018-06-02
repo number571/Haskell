@@ -5,4 +5,4 @@ tail' [] = []
 tail' (x:xs) = xs
 
 main :: IO()
-main = print (tail' [1..10])
+main = print $ tail' [1..10]
