@@ -1,6 +1,7 @@
 module Main where
 
 tail' :: [a] -> [a]
+tail' [] = []
 tail' (x:xs) = xs
 
 main :: IO()
