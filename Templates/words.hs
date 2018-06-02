@@ -12,9 +12,7 @@ length' [] = 0
 length' (x:xs) = 1 + length' xs
 
 isSpace :: Char -> Bool
-isSpace x = if x == ' ' 
-    || x == '\t'
-    || x == '\n'
+isSpace x = if x == ' ' || x == '\t' || x == '\n'
     then True else False
 
 wait :: String -> String
