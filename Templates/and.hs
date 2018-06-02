@@ -10,6 +10,7 @@ not' True = False
 (&&&) _ False = False
 (&&&) _ _ = True
 
+and' [] = True
 and' [x] = x
 and' (x:y:zs) = if
     | not' $ x &&& y -> False
