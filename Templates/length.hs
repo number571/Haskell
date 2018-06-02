@@ -1,8 +1,8 @@
 module Main where
 
-len :: [a] -> Int
-len [] = 0
-len (x:xs) = 1 + len xs
+length' :: [a] -> Int
+length' [] = 0
+length' (x:xs) = 1 + length' xs
 
 main :: IO()
-main = print . len $ [0..100]
+main = print $ length' [1..100]
