@@ -8,4 +8,4 @@ product' :: Num a => [a] -> a
 product' x = foldl1' (*) x
 
 main :: IO()
-main = print (product' [1..6])
+main = print $ product' [1..6]
