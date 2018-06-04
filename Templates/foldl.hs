@@ -5,4 +5,4 @@ foldl' _ x [] = x
 foldl' f x (y:ys) = foldl' f (f x y) ys
 
 main :: IO()
-main = print (foldl' (/) 64 [4,2,4])
+main = print $ foldl' (/) 64 [4,2,4]
