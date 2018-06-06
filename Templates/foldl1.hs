@@ -1,6 +1,7 @@
 module Main where
 
 foldl1' :: (a -> a -> a) -> [a] -> a
+foldl1' _ [] = []
 foldl1' _ [x] = x
 foldl1' f (x:xs) = f x (foldl1' f xs)
 
