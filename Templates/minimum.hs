@@ -2,8 +2,7 @@ module Main where
 
 min' :: Ord a => a -> a -> a
 min' x y | x < y = x
-min' x y | x > y = y
-min' x _ = x
+min' _ y = y
 
 minimum' :: Ord a => [a] -> a
 minimum' [x] = x
