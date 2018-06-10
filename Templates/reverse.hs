@@ -4,11 +4,16 @@ length' :: [a] -> Int
 length' [] = 0
 length' (x:xs) = 1 + length' xs
 
-index :: [a] -> [Int]
-index xs = [(length' xs-1), (length' xs-2) .. 0]
+init' :: [a] -> [a]
+init' [x] = []
+init' (x:xs) = x : init' xs
+
+last' :: [a] -> a
+last' x = x !! (length' x-1)
 
 reverse' :: [a] -> [a]
-reverse' xs = [ xs !! x | x <- index xs]
+reverse' [] = []
+reverse' xs = last' xs : reverse' (init' xs)
 
 main :: IO()
 main = print $ reverse' [0,2..10]
