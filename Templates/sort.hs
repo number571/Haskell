@@ -5,13 +5,13 @@ length' :: [a] -> Int
 length' [] = 0
 length' (x:xs) = 1 + length' xs
 
+while' :: Ord a => Int -> ([a] -> [a]) -> [a] -> [a]
+while' 0 f xs = f xs
+while' n f xs = while' (n-1) f (f xs)
+
 sort' :: Ord a => [a] -> [a]
 sort' xs = while' (length' xs) sorting' xs
    where
-      while' :: Ord a => Int -> ([a] -> [a]) -> [a] -> [a]
-      while' 0 f xs = f xs
-      while' n f xs = while' (n-1) f (f xs)
-
       sorting' :: Ord a => [a] -> [a]
       sorting' [] = []
       sorting' [x] = [x]
