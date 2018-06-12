@@ -2,8 +2,7 @@
 module Main where
 
 sort' :: Ord a => [a] -> [a]
-sort' xs = do
-   while' (length' xs) sorting' xs
+sort' xs = while' (length' xs) sorting' xs
    where
       sorting' :: Ord a => [a] -> [a]
       sorting' [] = []
