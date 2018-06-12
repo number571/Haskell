@@ -2,6 +2,7 @@
 module Main where
 
 deleteBy' :: (a -> a -> Bool) -> a -> [a] -> [a]
+deleteBy' _ _ [] = []
 deleteBy' f n (x:xs) = if
    | f n x -> xs
    | otherwise -> x : deleteBy' f n xs
