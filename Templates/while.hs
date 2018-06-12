@@ -1,4 +1,3 @@
-{-# LANGUAGE MultiWayIf #-}
 module Main where
 
 map' :: (a -> b) -> [a] -> [b]
