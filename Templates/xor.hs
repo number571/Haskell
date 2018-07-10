@@ -30,11 +30,9 @@ length' :: [Bool] -> Int
 length' [] = 0
 length' (x:xs) = (+) 1 $ length' xs
 
-index :: [Bool] -> [Int]
-index xs = [((-) (length' xs) 1), ((-) (length' xs) 2) .. 0]
-
-reverse' :: [Bool] -> [Bool]
-reverse' xs = [(!!) xs x | x <- index xs]
+reverse' :: [a] -> [a]
+reverse' [] = []
+reverse' (x:xs) = reverse' xs ++ [x]
 
 getXor :: Bool -> Bool -> Bool
 getXor x y = (||) ((&&) (not x) y) ((&&) x (not y))
