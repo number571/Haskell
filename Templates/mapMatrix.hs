@@ -4,7 +4,7 @@ map' :: (a -> b) -> [a] -> [b]
 map' _ [] = []
 map' f (x:xs) = f x : map' f xs
 
-mapMatrix :: (a -> a) -> [[a]] -> [[a]]
+mapMatrix :: (a -> b) -> [[a]] -> [[b]]
 mapMatrix _ [] = []
 mapMatrix f ([]:xss) = mapMatrix f xss
 mapMatrix f (xs:xss) = map' f xs : mapMatrix f xss
