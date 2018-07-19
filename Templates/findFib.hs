@@ -8,11 +8,11 @@ fibonacci x | x <= 3 = 1
 fibonacci x = fibonacci (x-1) + fibonacci (x-2)
 
 findFib :: (Num a, Ord a) => a -> a
-findFib = \x -> f x 1
-    where f x n
+findFib x = func 1
+    where func n
             | x == fibonacci n = n
             | n > 20 = 0
-            | otherwise = f x (n+1)
+            | otherwise = func (n+1)
 
 main :: IO()
 main = print $ findFib 34
