@@ -1,11 +1,11 @@
 module Main where
 
 squareRoot :: Int -> Int
-squareRoot n = f n
+squareRoot n = func n
    where
-      f :: Int -> Int
-      f x
-         | x ^ 2 > n = f (x - 1)
+      func :: Int -> Int
+      func x
+         | x ^ 2 > n = func (x - 1)
          | otherwise = x
 
 main :: IO()
