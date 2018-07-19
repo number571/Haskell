@@ -1,4 +1,3 @@
-{-# LANGUAGE MultiWayIf #-}
 module Main where
 
 not' :: Bool -> Bool
@@ -12,9 +11,9 @@ not' True = False
 
 and' [] = True
 and' [x] = x
-and' (x:y:zs) = if
-    | not' $ x &&& y -> False
-    | otherwise -> and' (y:zs)
+and' (x:y:zs)
+    | not' $ x &&& y = False
+    | otherwise = and' (y:zs)
 
 main :: IO()
 main = print $ and' [True, True, False, True]
