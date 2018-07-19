@@ -2,7 +2,7 @@ module Main where
 
 null' :: [a] -> Bool
 null' [] = True
-null' x = False
+null' _ = False
 
 main :: IO()
 main = print $ null' ""
