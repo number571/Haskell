@@ -47,8 +47,7 @@ plus (x:xs) (y:ys)
         allY = y:ys
 
 xor' :: Int -> Int -> Int
-xor' xN yN =
-    pack . getNum $ plus xs ys
+xor' xN yN = pack . getNum $ plus xs ys
     where
         xs = reverse' [toBool x | x <- toBitList xN]
         ys = reverse' [toBool y | y <- toBitList yN]
