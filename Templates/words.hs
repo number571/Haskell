@@ -1,11 +1,10 @@
-{-# LANGUAGE MultiWayIf #-}
 module Main where
 
 drop' :: Int -> [a] -> [a]
 drop' _ [] = []
-drop' x (y:ys) = if
-    | x /= 0 -> drop' (x-1) ys
-    | otherwise -> y:ys
+drop' x (y:ys)
+    | x /= 0 = drop' (x-1) ys
+    | otherwise = y:ys
 
 length' :: [a] -> Int
 length' [] = 0
@@ -17,15 +16,15 @@ isSpace x = if x == ' ' || x == '\t' || x == '\n'
 
 accumulate :: String -> String
 accumulate [] = []
-accumulate (x:xs) = if
-    | isSpace x -> []
-    | otherwise -> x : accumulate xs
+accumulate (x:xs)
+    | isSpace x = []
+    | otherwise = x : accumulate xs
 
 words' :: String -> [String]
 words' [] = []
-words' (x:xs) = if
-    | isSpace x -> words' xs
-    | otherwise -> accumulate (x:xs) : words' 
+words' (x:xs)
+    | isSpace x = words' xs
+    | otherwise = accumulate (x:xs) : words' 
         (drop' (length' (accumulate (x:xs))) xs)
 
 main :: IO()
