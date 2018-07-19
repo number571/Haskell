@@ -1,13 +1,12 @@
-{-# LANGUAGE MultiWayIf #-}
 module Main where
 
 squareRoot :: Int -> Int
-squareRoot n = func n
+squareRoot n = f n
    where
-      func :: Int -> Int
-      func x = if
-         | x ^ 2 > n -> func(x - 1)
-         | otherwise -> x
+      f :: Int -> Int
+      f x
+         | x ^ 2 > n = f (x - 1)
+         | otherwise = x
 
 main :: IO()
 main = print $ squareRoot 121
