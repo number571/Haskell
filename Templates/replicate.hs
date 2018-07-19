@@ -1,4 +1,3 @@
-{-# LANGUAGE MultiWayIf #-}
 module Main where
 
 replicate' :: Int -> a -> [a]
