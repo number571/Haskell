@@ -1,4 +1,3 @@
-{-# LANGUAGE MultiWayIf #-}
 module Main where
 
 (|||) :: Bool -> Bool -> Bool
@@ -8,9 +7,9 @@ module Main where
 
 or' [] = False
 or' [x] = x
-or' (x:y:zs) = if
-    | x ||| y -> True
-    | otherwise -> or' (y:zs)
+or' (x:y:zs)
+    | x ||| y = True
+    | otherwise = or' (y:zs)
 
 main :: IO()
-main = print $ or' [False]
+main = print $ or' [False, True]
