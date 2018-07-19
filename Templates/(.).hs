@@ -6,4 +6,5 @@ module Main where
 func :: Int -> Int
 func x = x * x
 
+main :: IO()
 main = (print <-> func) 5
