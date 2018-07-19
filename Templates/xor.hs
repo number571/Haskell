@@ -1,4 +1,3 @@
-{-# LANGUAGE MultiWayIf #-}
 module Main where
 import Data.Bits (Bits, shiftL, (.|.))
 
@@ -21,10 +20,10 @@ getNum :: [Bool] -> [Int]
 getNum xN = [toNum x | x <- xN]
 
 toBitList :: Int -> [Int]
-toBitList x  = do
-    if  | x == 0 -> []
-        | odd  x -> 1 : toBitList (div x 2)
-        | even x -> 0 : toBitList (div x 2)
+toBitList x
+        | x == 0 = []
+        | odd  x = 1 : toBitList (div x 2)
+        | even x = 0 : toBitList (div x 2)
 
 length' :: [Bool] -> Int
 length' [] = 0
@@ -39,16 +38,16 @@ getXor x y = (||) ((&&) (not x) y) ((&&) x (not y))
 
 plus :: [Bool] -> [Bool] -> [Bool]
 plus [] _ = []; plus _ [] = []
-plus (x:xs) (y:ys) = do
-    if  | length' allX >  length' allY -> plus allX $ addFalse allY
-        | length' allX <  length' allY -> plus allY $ addFalse allX
-        | length' allX == length' allY -> getXor x y : plus xs ys
+plus (x:xs) (y:ys)
+        | length' allX >  length' allY = plus allX $ addFalse allY
+        | length' allX <  length' allY = plus allY $ addFalse allX
+        | length' allX == length' allY = getXor x y : plus xs ys
     where
         allX = x:xs
         allY = y:ys
 
 xor' :: Int -> Int -> Int
-xor' xN yN = do
+xor' xN yN =
     pack . getNum $ plus xs ys
     where
         xs = reverse' [toBool x | x <- toBitList xN]
