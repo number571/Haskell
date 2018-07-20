@@ -4,8 +4,9 @@ min' :: Ord a => a -> a -> a
 min' x y | x < y = x | otherwise = y
 
 minimum' :: Ord a => [a] -> a
+minimum' [] = undefined
 minimum' [x] = x
-minimum' (x:y:xs) = minimum' ((min' x y):xs)
+minimum' (x:xs) = min' x $ minimum' xs
 
 main :: IO()
-main = print $ minimum' [1,5,3,8,2,3,4]
+main = print $ minimum' [2,5,3,8,1,3,4]
