@@ -5,4 +5,4 @@ module Main where
 (!!!) (_:xs) n = (!!!) xs (n-1)
 
 main :: IO()
-main = print $ "hello, world" !! 4
+main = print $ "hello, world" !!! 4
