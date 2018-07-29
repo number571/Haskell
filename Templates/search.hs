@@ -1,7 +1,7 @@
 module Main where
 
 search :: Eq a => a -> [a] -> Int
-search _ [] = -1
+search _ [] = minBound :: Int
 search y (x:xs)
     | y == x = 0
     | otherwise = 1 + search y xs
