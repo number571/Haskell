@@ -1,12 +1,6 @@
-module Main where
-
-map' :: (a -> b) -> [a] -> [b]
-map' _ [] = []
-map' f (x:xs) = f x : map' f xs
-
-while' :: Ord a => Int -> ([a] -> [a]) -> [a] -> [a]
-while' 0 _ xs = xs
-while' n f xs = while' (n-1) f (f xs)
+while :: a -> (a -> a -> Bool) -> a -> IO() -> (a -> a) -> IO()
+while i f n act mov | not (f i n) = return()
+while i f n act mov = act >> while (mov i) f n act mov
 
 main :: IO()
-main = print $ while' 5 (map' (*2)) [1,2,3,4,5]
+main = while 0 (<) 10 (print "hello, world") (+1)
